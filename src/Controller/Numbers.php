@@ -11,10 +11,17 @@ class Numbers extends AbstractController
     #[Route('/')]
     public function number(): Response
     {
-        $number = random_int(0, 100);
+        
+        $number1 = random_int(0, 12);
+        $number2 = random_int(0, 12);
 
         return $this->render('numbers/number.html.twig', [
-            'number' => $number,
+            'number1' => $number1,
+            'number2' => $number2,
         ]);
+    }
+
+    public function multiplication($num1,$num2) {
+        return $num1*$num2;
     }
 }
