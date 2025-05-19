@@ -8,13 +8,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class Numbers extends AbstractController {
 
-    #[Route('/')]
+    private array $messages= ["Hello", "HI"];
+
+    #[Route('/', name: 'app_index')]
     public function index(): Response {
 
         return $this->render('base.html.twig', []);
     }
 
-    #[Route('/multiplier', name: 'multiplier')]
     public function number(): Response {
         $selected = 8;
         

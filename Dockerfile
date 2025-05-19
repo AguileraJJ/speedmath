@@ -1,5 +1,5 @@
 # Use an official PHP image as base
-FROM php:apache
+FROM php:8.3-apache
 
 # Enable the rewrite module
 RUN apt-get update && apt-get install -y \
@@ -24,9 +24,9 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN a2enmod rewrite
 RUN service apache2 restart
 
-WORKDIR /var/www
+WORKDIR /var/www/html
 
-COPY . /var/www
+COPY . /var/www/html
 
 RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --no-scripts --no-autoloader
 
