@@ -8,14 +8,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class Numbers extends AbstractController {
 
-    private array $messages= ["Hello", "HI"];
-
     #[Route('/', name: 'app_index')]
     public function index(): Response {
 
         return $this->render('base.html.twig', []);
     }
 
+    #[Route('/multiplier', name: 'app_multiplier')]
     public function number(): Response {
         $selected = 8;
         
@@ -26,13 +25,4 @@ class Numbers extends AbstractController {
         ]);
     }
 
-    #[Route('/lucky/number')]
-    public function numbers(): Response
-    {
-        $number = random_int(0, 100);
-
-        return new Response(
-            '<html><body>Lucky number: '.$number.'</body></html>'
-        );
-    }
 }
