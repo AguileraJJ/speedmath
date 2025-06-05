@@ -14,12 +14,12 @@ class Numbers extends AbstractController {
         return $this->render('base.html.twig', []);
     }
 
-    #[Route('/multiplier', name: 'app_multiplier')]
-    public function number(): Response {
-        $selected = 8;
+    #[Route('/multiplier/{selected}', name: 'app_multiplier')]
+    public function number(int $selected): Response {
         
         $number = random_int(0, $selected);
         
+
         return $this->render('numbers/number.html.twig', [
             'number' => $number,
         ]);
