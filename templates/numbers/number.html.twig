@@ -4,17 +4,20 @@
 <h1>Multiply</h1>
     <div class="game-container">
         <h1>Multiplication Game</h1>
-        <p>What is <strong>{{ number1 }}</strong> x <strong>{{ number2 }}</strong>?</p>
 
-        <form id="gameForm">
+        <form id="muliplication_form">
+        {% for num in multiplication_facts %}
+            <div>What is {{ selected }} x {{ num }} </div>
             <input type="number" id="answer" name="answer" placeholder="Your answer" required>
-            <button type="submit">Submit</button>
+            <button type="button">enter</button>
+            
+        {% endfor %}      
         </form>
 
         <p id="response"></p>
     </div>
 
-    <script>
+    <!--script>
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('gameForm');
             const answerInput = document.getElementById('answer');
@@ -24,9 +27,8 @@
                 event.preventDefault();
 
                 const userAnswer = answerInput.value;
-                const number1 = {{ number1 }}; // Injected via Twig
-                const number2 = {{ number2 }}; // Injected via Twig
-
+                const number1 = {{ selected }}; // Injected via Twig
+                
                 // Send the answer via AJAX to the Symfony backend
                 fetch('{{ path('check_answer') }}', {
                     method: 'POST',
@@ -50,6 +52,6 @@
             });
         });
 
-    </script>
+    </script-->
 
 {% endblock %}

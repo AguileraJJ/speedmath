@@ -19,13 +19,16 @@ class Numbers extends AbstractController {
     #[Route('/multiplier/{selected}', name: 'app_multiplier')]
     public function number(int $selected): Response {
         
-        $number1 = random_int($selected, 12);
-        $number2 = random_int($selected, 12);
-        
+        $multiplier = 12;
+
+        $multiplication_facts = [];
+        for ($i = 0; $i<=$multiplier; $i++){
+          $multiplication_facts[$i] = random_int($selected, $multiplier);     
+        }
 
         return $this->render('numbers/number.html.twig', [
-            'number1' => $number1,
-            'number2' => $number2,
+            'selected' => $selected,
+            'multiplication_facts' => $multiplication_facts,
         ]);
     }
 
