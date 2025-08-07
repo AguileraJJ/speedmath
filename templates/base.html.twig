@@ -1,41 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
 
         {% block stylesheets %}
-
         {% endblock %}
 
         {% block javascripts %}
-
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
+
     <body>
-    <nav class="bg-gray-800">
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div class="relative flex h-16 items-center justify-between">
-                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                    <div class="hidden sm:ml-6 sm:block">
-                        <div class="flex space-x-4">
-                            {% for number in 0..12 %}
-                                <a href="{{ path('app_multiplier', {'selected':number}) }}">{{number}}</a>
-                            {% endfor %}
 
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+    <header class="main-header">
+        <div class="main-brand">
+            <a href="/" class="main-header__brand">Speed Math</a>
         </div>
-    </nav>
+        <div class="main-box">
+            <a href="/" class="main-header__box">I'm an Box</a>
+        </div>
+        <nav class="main-nav">
+            <ul class="main-nav__items">
+                <li class="main-nav__item">
+                    {% for number in 0..12 %}
+                        <a href="{{ path('app_multiplier', {'selected':number}) }}">{{number}}</a>
+                    {% endfor %}
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-    {% block instructions %}
-        <h1>Lets start testing how fast we are!</h1>
-    {% endblock %}
+    <main>
+        {% block instructions %}
+            <h1>Lets start testing how fast we are!</h1>
+        {% endblock %}
 
-    {% block body %}{% endblock %}
+        {% block body %}{% endblock %}
+    </main>
+
+    <footer>
+
+    </footer>
+
     </body>
 </html>
